@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+
+    h1 {
+        font-style: italic;
+        margin-bottom: 40px;
+    }
+
+
+    body {
+    margin-left: 50px;
+    margin-top: 50px;
+    }
+
+    .book-details {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .book-info {
+        width: 45%;
+        flex-grow: 1;
+    }
+
+    .book-image {
+        width: 45%;
+        margin-right: 0px;
+        margin-left: 80px;
+    }
+
+
+</style>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ book.name }}</title>
+</head>
+
+<body>
+    <div class="book-details">
+        <div class="book-info">
+            <h1>{{ book.name }}</h1>
+            <p>Автор: {{ book.author }}</p>
+            <p>Жанр: {{ book.genre }}</p>
+            <p>Рік видання: {{ book.publication_year }}</p>
+            <p>Видавництво: {{ book.publisher }}</p>
+            <p style="margin-bottom: 40px;">Кількість сторінок: {{ book.pages }}</p>
+            <p style="margin-bottom: 40px;">{{ book.description }}</p>
+            {% if book.file %}
+
+                    <a href="{% url 'first_20_lines' book_id=book.pk %}" class="btn" style="margin-right: 50px;">Перейти до читання</a>
+                    <a href="{% url 'book_fragment' fragment=book.fragment %}" class="btn">Читати уривок</a>
+
+            {% else %}
+                <p>Файл відсутній(</p>
+            {% endif %}
+        </div>
+        <div class="book-image">
+            <img src="{{ book.cover_image.url }}" alt="{{ book.name }}" width="400" height="500">
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+
+    h1 {
+    margin-top: 50px;
+    text-align: center;
+    }
+
+    body {
+    background-image: url('/media/wall11.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% auto;
+    background-attachment: fixed;
+    margin-left: 120px;
+    margin-right: 120px;
+    margin-top: 50px;
+}
+
+    .body-container {
+        padding: 100px;
+        border: 2px solid #ccc;
+        border-radius: 20px;
+    }
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.name }}</title>
+</head>
+
+<body class="body-container">
+    <h1>"{{ book.name }}"</h1>
+    <ul>
+        {% for line in first_20_lines %}
+           {{ line }}<br>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

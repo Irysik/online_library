@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    h1 {
+        margin-top: 50px;
+        margin-bottom: 120px;
+        text-align: center;
+        font-size: 60px;
+        z-index: 1;
+        position: relative;
+        color: bisque;
+        font-style: italic;
+        font-family: Charter;
+    }
+
+    h2 {
+        margin-top: 80px;
+        padding-left: 50px;
+        color: bisque;
+        font-style: italic;
+    }
+
+    .search_form {
+        position: absolute;
+        top: 200px;
+        right: 20px;
+    }
+
+    h4 {
+        color: bisque;
+        font-style: italic;
+    }
+
+    .book_grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-gap: 50px;
+        margin-right: 70px;
+    }
+
+    .book_item {
+        text-align: center;
+        margin-left: 50px;
+    }
+
+
+</style>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Онлайн бібліотека</title>
+
+        {% load static %}
+        <link href="{% static 'main.css' %}" rel="stylesheet" type="text/css">
+
+    </head>
+    <body>
+        <h1> Нумо читати  </h1>
+
+        {% for g in genres %}
+    <h2>{{ g.name }}</h2>
+    <hr class="divider">
+    <div class="book_grid">
+        {% for b in books %}
+            {% if b.genre == g %}
+                <div class="book_item">
+                    <a href="/books/{{ b.pk }}/">
+                        <h4>{{ b.name }}</h4>
+                        <img src="{{ b.cover_image.url }}" alt="{{ b.name }}" width="200" height="300">
+                    </a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endfor %}
+
+{% if books %}
+<div class="search_form">
+    <h4>Введіть дані для пошуку</h4>
+    <form action="/search/" method="get">
+        <label>
+            <input type="text" name="q" placeholder="Пошук..." value="{{ query }}">
+        </label>
+        <button type="submit">Пошук</button>
+    </form>
+</div>
+{% endif %}
+    </body>
+
+</html>

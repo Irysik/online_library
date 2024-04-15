@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+body {
+    background-image: url('/media/wall4.jpeg');
+    /*background-size: cover;*/
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% auto;
+    background-attachment: fixed;
+}

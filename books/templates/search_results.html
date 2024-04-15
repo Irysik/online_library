@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+
+    body {
+    background-image: url('/media/wall7.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% auto;
+    background-attachment: fixed;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Пошук результатів</title>
+</head>
+
+<body>
+
+{% if books %}
+    <h2>Результати пошуку для "{{ query }}"</h2>
+    <ul>
+        {% for book in books %}
+             <li style="margin-bottom: 10px;"><a href="{% url 'book_detail' pk=book.pk %}">{{ book.name }}, {{book.author}}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>За запитом "{{ query }}"  нічого не знайдено.</h3>
+{% endif %}
+
+</body>
+
+</html>

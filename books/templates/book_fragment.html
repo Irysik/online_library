@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    body {
+    background-image: url('/media/wall5.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% auto;
+    background-attachment: fixed;
+    margin-left: 50px;
+    margin-top: 50px;
+    }
+
+    .container {
+            width: 80%;
+            margin: auto;
+            column-count: 2;
+            column-gap: 60px;
+            padding-right: 20px;
+        }
+    </style>
+
+<head>
+    <title>Book Fragment</title>
+</head>
+
+    <body>
+    <div class="container">
+        <p>{{ fragment|linebreaks }}</p>
+    </div>
+    </body>
+
+</html>
