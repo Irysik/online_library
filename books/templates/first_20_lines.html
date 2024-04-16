@@ -42,7 +42,7 @@
 <!--        {% endfor %}-->
 
 
-        {{ characters }}<br>
+        {{ text|safe }}<br>
         <br>
 
         <a href="?page={{ page|add:-1 }}" class="btn" style="margin-right: 50px;">Previous page</a>
